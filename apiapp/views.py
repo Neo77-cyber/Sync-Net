@@ -7,6 +7,11 @@ from urllib import response
 from googleplaces import GooglePlaces, types, lang
 from .forms import InputForm
 from django.contrib import messages
+from django.shortcuts import render, redirect
+from django_otp.forms import OTPAuthenticationForm
+from django_otp import devices_for_user
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -30,6 +35,7 @@ def home(request):
 
         if data['continent_code'] == 'AF':
             messages.info(request, 'You are welcome')
+            
         else:
             messages.info(request, 'Hey! You do not have access to this page')
 
@@ -46,6 +52,9 @@ def get_ip_address(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
+def beninhistory(request):
+    return render(request, 'beninhistory.html')
+
 def github_api(request):
 
     endpoint = 'https://coronavirus.m.pipedream.net/'
@@ -60,24 +69,19 @@ def github_api(request):
     
 
     res = [eval(i) for i in deathrate]
+    
     maximum_death = max(res)
+    
+    cases = []
     for i in rawdata:
         if i['Deaths'] == str(maximum_death):
-            cases = i
+            cases.append(i)
 
-            print(cases)
             
-            Latitude = cases['Lat']
-            
-            Longitude = cases['Long_']
-            
-
 
         # API_KEY = 'AIzaSyDflVXxDLQdJyBIlQoTOThMX3YToQouoHU'
-
-        
+       
         # google_places = GooglePlaces(API_KEY)
-
 
         # query_result = google_places.nearby_search(
                 
@@ -86,11 +90,8 @@ def github_api(request):
                 
         #         types =[types.TYPE_HOSPITAL])
 
-
         # if query_result.has_attributions:
         #     print (query_result.html_attributions)
-
-
 
         # for place in query_result.places:
         #     print(place)
@@ -98,32 +99,36 @@ def github_api(request):
         #     print("Latitude", place.geo_location['lat'])
         #     print("Longitude", place.geo_location['lng'])
         #     print()
-
-
-    
-    
-
    
-            
-    
-
-
-        
-    return render(request, 'githubprojects.html', {'case_studys':cases})
+    return render(request, 'githubprojects.html', {'cases':cases})
 
 def paypal(request):
     return render(request, 'checkout.html')
 
+def sociallogin(request):
+    return render(request, 'sociallogin.html')
 
-def transfer(request):
-    context ={}
-    context['form']= InputForm()
-
-    return render(request, 'notification.html', context)
-
+def socialhome(request):
+    return render(request, 'homepage.html')
 
 
 
+def otp_login(request):
+
+    return render(request, 'notification.html')
+    
+
+
+@login_required
+def otp_verify(request):
+    
+
+    return render(request, 'otp_verify.html')
+
+
+
+def accounthome(request):
+    return render(request, 'accounthome.html')
 
 
 
