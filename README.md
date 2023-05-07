@@ -10,7 +10,7 @@ This project demonstrates the integration of the following third-party APIs:
 
 1. IP Address API: Retrieves IP address based on location.
 2. Payment Gateway API: Enables secure online payments for your application.
-3. Social Media API: Integrates social media sharing and authentication features.
+3. Social Media API: Integrates social media authentication features.
 4. COVID19 API: Retrieves covid19 data, Fatality rate, Deaths etc.
 
 
@@ -41,6 +41,14 @@ This project demonstrates the integration of the following third-party APIs:
 5. Apply database migrations: python manage.py migrate
 
 6. Start the development server: python manage.py runserver
+
+##Usage
+Explore the different functionalities available through the integrated APIs.
+Test the IP address API by entering an IP address and if you do not live in a certain continent you're restricted from seeing contents in the next page.
+Perform test payments using the integrated payment gateway API.
+Authenticate on social media using the provided social media integration.
+Retrieve user location information using the geolocation API.
+
 
 
 ## Contributing
