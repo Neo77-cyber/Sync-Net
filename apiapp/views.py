@@ -1,20 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 import requests
-from requests import get, Session
+from requests import get
 from django.http import HttpResponse
 from django.contrib import messages
 from urllib import response
-from googleplaces import GooglePlaces, types, lang
-from .forms import InputForm
 from django.contrib import messages
-from django.shortcuts import render, redirect
-from django_otp.forms import OTPAuthenticationForm
-from django_otp import devices_for_user
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 # Create your views here.
 
-def home(request):
+def restricted_ipadress_access(request):
 
     user_ip = get_ip_address(request)
     
@@ -39,11 +35,9 @@ def home(request):
         else:
             messages.info(request, 'Hey! You do not have access to this page')
 
-    return render(request, 'index.html', {'data': data})
+    return render(request, 'restrictedip.html', {'data': data})
 
-
-
-
+# Use this in production
 def get_ip_address(request):
     user_ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
     if user_ip_address:
@@ -52,10 +46,8 @@ def get_ip_address(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-def beninhistory(request):
-    return render(request, 'beninhistory.html')
 
-def github_api(request):
+def max_covid19_death_rate(request):
 
     endpoint = 'https://coronavirus.m.pipedream.net/'
     
@@ -76,59 +68,21 @@ def github_api(request):
     for i in rawdata:
         if i['Deaths'] == str(maximum_death):
             cases.append(i)
+    return render(request, 'maxcoviddeathrate.html', {'cases':cases})
 
-            
-
-        # API_KEY = 'AIzaSyDflVXxDLQdJyBIlQoTOThMX3YToQouoHU'
-       
-        # google_places = GooglePlaces(API_KEY)
-
-        # query_result = google_places.nearby_search(
-                
-        #         lat_lng ={'lat': 2.8994, 'lng': -3.8889},
-        #         radius = 5000,
-                
-        #         types =[types.TYPE_HOSPITAL])
-
-        # if query_result.has_attributions:
-        #     print (query_result.html_attributions)
-
-        # for place in query_result.places:
-        #     print(place)
-        #     print (place.name)
-        #     print("Latitude", place.geo_location['lat'])
-        #     print("Longitude", place.geo_location['lng'])
-        #     print()
-   
-    return render(request, 'githubprojects.html', {'cases':cases})
-
-def paypal(request):
-    return render(request, 'checkout.html')
+def paypalcheckout(request):
+    return render(request, 'paypalcheckout.html')
 
 def sociallogin(request):
     return render(request, 'sociallogin.html')
 
-def socialhome(request):
-    return render(request, 'homepage.html')
-
-
-
 def otp_login(request):
 
-    return render(request, 'notification.html')
+    return render(request, 'otplogin.html')
     
 
 
-@login_required
-def otp_verify(request):
-    
 
-    return render(request, 'otp_verify.html')
-
-
-
-def accounthome(request):
-    return render(request, 'accounthome.html')
 
 
 
