@@ -1,6 +1,5 @@
-# API-calls
+# Sync-Net
 
-# Third-Party API Integration
 
 This project demonstrates the integration of various third-party APIs with Django to add different functionalities to your application. It showcases the usage of popular APIs to enhance your application's features and provide additional services to your users.
 
