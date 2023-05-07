@@ -39,7 +39,8 @@ This project demonstrates the integration of the following third-party APIs:
 
 6. Start the development server: python manage.py runserver
 
-##Usage
+## Usage
+
 Explore the different functionalities available through the integrated APIs.
 Test the IP address API by entering an IP address and if you do not live in a certain continent you're restricted from seeing contents in the next page.
 Perform test payments using the integrated payment gateway API.
