@@ -25,11 +25,8 @@ This project demonstrates the integration of the following third-party APIs:
 
 ## Installation
 
-1. Clone the repository:
-
-   ```shell
-   git clone https://github.com/your-username/django-third-party-api-integration.git
-   
+ 1. Clone the repository:
+  
  2. Set up a virtual environment: Pipenv shell
  
  3. Install dependencies: pip install -r requirements.txt
