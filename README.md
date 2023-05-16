@@ -7,10 +7,10 @@ This project demonstrates the integration of various third-party APIs with Djang
 
 This project demonstrates the integration of the following third-party APIs:
 
-1. IP Address API: Retrieves IP address based on location.
-2. Payment Gateway API: Enables secure online payments for your application.
+1. IP Address API: Retrieves IP address based on location if the request is not from a certain continent you're restricted from seeing contents in the next page.
+2. Payment Gateway API: Enables secure online payments for your application with PayPal.
 3. Social Media API: Integrates social media authentication features.
-4. COVID19 API: Retrieves covid19 data, Fatality rate, Deaths etc.
+4. COVID19 API: Retrieves the highest deathrate at any point with covid19 data.
 
 
 ## Technologies Used
